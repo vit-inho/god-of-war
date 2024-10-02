@@ -42,128 +42,49 @@
             color: white;
             text-transform: uppercase;
         }
-        .card-front {
-            background-color: gray;
-        }
-        .card-back {
-            background-color: darkgray;
-            transform: rotateY(180deg);
-        }
-        h1 {
-            color: white;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+        .card-front { background-color: gray; }
+        .card-back { background-color: darkgray; transform: rotateY(180deg); }
+        h1 { color: white; text-align: center; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
 <h1>GOD OF WAR</h1>
 
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front">Qual é o nome do filho de Kratos?</div>
-        <div class="card-back">Atreus</div>
-    </div>
-</div>
+<div id="cards-container"></div>
 
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front">Em qual mitologia se baseia God of War 2018?</div>
-        <div class="card-back">Mitologia Nórdica</div>
-    </div>
-</div>
+<script>
+    const questions = [
+        { question: "Qual é o nome do filho de Kratos?", answer: "Atreus" },
+        { question: "Em qual mitologia se baseia God of War 2018?", answer: "Mitologia Nórdica" },
+        { question: "Qual é o nome da esposa de Kratos?", answer: "Lysandra" },
+        { question: "Qual é o principal rival de Kratos em God of War?", answer: "Zeus" },
+        { question: "Que arma Kratos usa em God of War 2018?", answer: "Machado Leviathan" },
+        { question: "Quem é o deus da guerra na mitologia nórdica?", answer: "Tyr" },
+        { question: "Qual criatura mitológica Kratos enfrenta no começo do primeiro jogo?", answer: "Minotauro" },
+        { question: "Qual é o nome da deusa da sabedoria que ajuda Kratos?", answer: "Athena" },
+        { question: "Em que cidade Kratos se torna o novo deus da guerra?", answer: "Atenas" },
+        { question: "Qual é o título do primeiro jogo da série?", answer: "God of War (2005)" },
+        { question: "Quantos jogos principais existem na série God of War até 2021?", answer: "8 jogos" },
+        { question: "Qual é o nome da mãe de Atreus?", answer: "Faye" },
+        { question: "Quem trai Kratos no final de God of War II?", answer: "Zeus" },
+        { question: "Qual é o principal tema de God of War?", answer: "Paternidade" },
+        { question: "Qual é a data de lançamento de God of War: Ragnarok?", answer: "9 de novembro de 2022" }
+    ];
 
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front">Qual é o nome da esposa de Kratos?</div>
-        <div class="card-back">Lysandra</div>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front">Qual é o principal rival de Kratos em God of War?</div>
-        <div class="card-back">Zeus</div>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front">Que arma Kratos usa em God of War 2018?</div>
-        <div class="card-back">Machado Leviathan</div>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front">Quem é o deus da guerra na mitologia nórdica?</div>
-        <div class="card-back">Tyr</div>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front">Qual criatura mitológica Kratos enfrenta no começo do primeiro jogo?</div>
-        <div class="card-back">Minotauro</div>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front">Qual é o nome da deusa da sabedoria que ajuda Kratos?</div>
-        <div class="card-back">Athena</div>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front">Em que cidade Kratos se torna o novo deus da guerra?</div>
-        <div class="card-back">Atenas</div>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front">Qual é o título do primeiro jogo da série?</div>
-        <div class="card-back">God of War (2005)</div>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front">Quantos jogos principais existem na série God of War até 2021?</div>
-        <div class="card-back">8 jogos</div>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front">Qual é o nome da mãe de Atreus?</div>
-        <div class="card-back">Faye</div>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front">Quem trai Kratos no final de God of War II?</div>
-        <div class="card-back">Zeus</div>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front">Qual é o principal tema de God of War?</div>
-        <div class="card-back">Paternidade</div>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front">Qual é a data de lançamento de God of War: Ragnarok?</div>
-        <div class="card-back">9 de novembro de 2022</div>
-    </div>
-</div>
+    const container = document.getElementById('cards-container');
+    questions.forEach(q => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <div class="card-inner">
+                <div class="card-front">${q.question}</div>
+                <div class="card-back">${q.answer}</div>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+</script>
 
 </body>
 </html>
